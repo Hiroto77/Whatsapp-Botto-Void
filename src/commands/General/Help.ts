@@ -11,7 +11,7 @@ export default class Command extends BaseCommand {
             category: 'general',
             usage: `${client.config.prefix}help (command_name)`,
             dm: true,
-            aliases: ['h']
+            aliases: ['list']
         })
     }
 
@@ -29,7 +29,7 @@ export default class Command extends BaseCommand {
                     categories[info.config.category].push(info)
                 }
             }
-            let text = `🎫 *${this.client.config.name} Command List* 🎫\n\n`
+            let text = `🖤 *${this.client.config.name} Command List* 🖤\n\n`
             const keys = Object.keys(categories)
             for (const key of keys)
                 text += `${this.emojis[keys.indexOf(key)]} *${this.client.util.capitalize(key)}*\n❐ \`\`\`${categories[
@@ -46,7 +46,7 @@ export default class Command extends BaseCommand {
         if (!command) return void M.reply(`No Command of Alias Found | "${key}"`)
         const state = await this.client.DB.disabledcommands.findOne({ command: command.config.command })
         M.reply(
-            `🎫 *Command:* ${this.client.util.capitalize(command.config?.command)}\n🎗️ *Status:* ${
+            `⭐️ *Command:* ${this.client.util.capitalize(command.config?.command)}\n🎗️ *Status:* ${
                 state ? 'Disabled' : 'Available'
             }\n🀄 *Category:* ${this.client.util.capitalize(command.config?.category || '')}${
                 command.config.aliases
